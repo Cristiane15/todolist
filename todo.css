@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #e9ecef; /* Cinza claro */
+}
+
+h1 {
+    color: #4B0082; /* Roxo */
+    text-align: center;
+}
+
+#taskInput {
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Cinza claro */
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #4B0082; /* Roxo */
+    color: rgb(54, 53, 53);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    background: white; /* Branco */
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray; /* Cinza */
+}
+
+.delete-btn {
+    background: black; /* Preto */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.edit-btn {
+    background: #6a5acd; /* Roxo claro */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.filter-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-btn {
+    margin: 0 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4B0082; /* Roxo */
+    color: white;
+}

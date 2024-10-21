@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #e9ecef; /* Cinza claro */
+        }
+        h1 {
+            color: #4B0082; /* Roxo */
+            text-align: center;
+        }
+        #taskInput {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc; /* Cinza claro */
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            background: white; /* Branco */
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: rgb(131, 128, 128); /* Cinza */
+        }
+        .delete-btn {
+            background: black; /* Preto */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        .edit-btn {
+            background: #6a5acd; /* Roxo claro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px; /* Diminui a margem para aproximar os botões */
+        }
+        .complete-btn {
+            background: #28a745; /* Verde */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px; /* Aproxima o botão */
+        }
+        .button-container {
+            display: flex; /* Adiciona um contêiner para os botões */
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Tarefas</h1>
+    <div>
+        <input type="text" id="taskInput" placeholder="Adicionar nova tarefa...">
+        <button onclick="addTask()">Adicionar</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+            if (taskText === '') return;
+
+            const li = document.createElement('li');
+            li.textContent = taskText;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Excluir';
+            deleteButton.className = 'delete-btn';
+            deleteButton.onclick = function() {
+                li.remove();
+            };
+
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Editar';
+            editButton.className = 'edit-btn';
+            editButton.onclick = function() {
+                const newText = prompt('Editar tarefa:', taskText);
+                if (newText !== null && newText.trim() !== '') {
+                    li.childNodes[0].nodeValue = newText; // Atualiza o texto da tarefa
+                }
+            };
+
+            const completeButton = document.createElement('button');
+            completeButton.textContent = 'Concluído';
+            completeButton.className = 'complete-btn';
+            completeButton.onclick = function(event) {
+                event.stopPropagation(); // Impede que o evento clique na tarefa
+                li.classList.toggle('completed');
+                completeButton.textContent = li.classList.contains('completed') ? 'Concluído' : 'Concluído';
+            };
+
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'button-container';
+            buttonContainer.appendChild(editButton);
+            buttonContainer.appendChild(deleteButton);
+            buttonContainer.appendChild(completeButton); // Apenas o botão Concluído
+
+            li.appendChild(buttonContainer);
+            document.getElementById('taskList').appendChild(li);
+            taskInput.value = '';
+        }
+    </script>
+
+</body>
+</html>
